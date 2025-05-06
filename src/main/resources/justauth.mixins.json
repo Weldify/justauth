@@ -1,0 +1,11 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "justauth.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": ["PacketLoginMixin"],
+    "server": ["PacketHandlerLoginMixin"],
+    "injectors": {
+        "defaultRequire": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "justauth",
+  "version": "${version}",
+
+  "name": "JustAuth",
+  "authors": ["Weldify"],
+
+  "license": "WTFPL",
+
+  "environment": "*",
+  "mixins": [
+		"justauth.mixins.json"
+	],
+
+  "depends": {
+		"minecraft": "*",
+    "fabricloader": ">=0.15.5"
+  }
+}
