@@ -9,9 +9,7 @@
   "license": "WTFPL",
 
   "environment": "*",
-  "mixins": [
-		"justauth.mixins.json"
-	],
+  "mixins": ["justauth.mixins.json"],
 
   "depends": {
 		"minecraft": "*",

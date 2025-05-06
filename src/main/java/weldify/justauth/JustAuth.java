@@ -1,4 +1,4 @@
-package justauth;
+package weldify.justauth;
 
 import net.minecraft.core.net.packet.PacketLogin;
 

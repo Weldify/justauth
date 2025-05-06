@@ -1,4 +1,4 @@
-package justauth.mixin;
+package weldify.justauth.mixin;
 
 import net.minecraft.core.net.packet.PacketLogin;
 import net.minecraft.server.net.handler.PacketHandlerLogin;
@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import justauth.JustAuth;
+import weldify.justauth.JustAuth;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

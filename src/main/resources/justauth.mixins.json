@@ -1,7 +1,7 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "justauth.mixin",
+    "package": "weldify.justauth.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": ["PacketLoginMixin"],
     "server": ["PacketHandlerLoginMixin"],

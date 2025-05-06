@@ -1,4 +1,4 @@
-package justauth.mixin;
+package weldify.justauth.mixin;
 
 import net.minecraft.core.Global;
 import net.minecraft.core.net.packet.PacketLogin;
@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import justauth.JustAuth;
+import weldify.justauth.JustAuth;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 public class PacketLoginMixin {
 	@Inject(method = "read", at = @At("HEAD"), remap = false)
 	void read(DataInputStream dis, CallbackInfo ci) throws IOException {
-		int length = dis.readByte();
+		byte length = dis.readByte();
 		byte[] password = new byte[length];
 		dis.readFully(password);
 
@@ -30,13 +30,15 @@ public class PacketLoginMixin {
 	}
 
 	@Inject(method = "write", at = @At("HEAD"), remap = false)
-	void write(DataOutputStream dos, CallbackInfo ci) {
-		try {
-			byte[] password = Files.readAllBytes(Paths.get("just.auth"));
-			dos.writeByte(password.length);
-			dos.write(password);
-		} catch (Exception ignored) {
-			// Don't send anything! Might let people join regular servers.
+	void write(DataOutputStream dos, CallbackInfo ci) throws IOException {
+		// @Note: I don't know why the server would want to write this packet back, but it does.
+		if (Global.isServer) {
+			dos.writeByte(0);
+			return;
 		}
+
+		byte[] password = Files.readAllBytes(Paths.get("just.auth"));
+		dos.writeByte(password.length);
+		dos.write(password);
 	}
 }
